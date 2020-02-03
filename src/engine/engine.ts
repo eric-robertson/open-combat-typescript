@@ -1,20 +1,26 @@
 import {BaseSystem} from '../systems/BaseSystem';
-import { SystemManager } from './SystemManager';
-import { ComponentManager } from './component';
-import { EntityManager } from './EntityManger';
+import { SystemManager } from './system/SystemManager';
+import { ComponentManager } from './component/ComponentManager';
+import { EntityManager } from './entity/EntityManger';
 
 export class Engine {
   systemManager: SystemManager;
   componentManager: ComponentManager;
   entityManager: EntityManager;
+  gameLoopInterval: any;
 
   constructor() {}
 
-  startGameLoop() {}
+  startGameLoop(targetFrameRate: number) {
+    let updateSpeed = 1000 / targetFrameRate
+    this.gameLoopInterval = setInterval( () => {
+      this.systemManager.runSystems();
+    }, updateSpeed)
+  }
 
-  gameloop() {}
-
-  endGameLoop() {}
+  endGameLoop() {
+    clearInterval(this.gameLoopInterval);
+  }
 
   registerSystem(system: BaseSystem) {
     

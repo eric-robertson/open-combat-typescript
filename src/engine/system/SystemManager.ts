@@ -9,7 +9,7 @@ export class SystemManager {
 
   runSystems() {
     for (let i = 0; i < this.systems.length; i++) {
-      this.systems.indexOf(i).run();
+      this.systems.indexOf[i].run();
     }
   }
 
