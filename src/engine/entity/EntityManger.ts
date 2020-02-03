@@ -1,4 +1,4 @@
-export interface entityInterface {
+export interface entityType {
 
 }
 export class EntityManager {
