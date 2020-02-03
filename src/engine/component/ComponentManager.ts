@@ -1,16 +1,12 @@
 import { entityType } from '../entity/EntityManger.js'
 
-interface componentBucketInterface {
+interface ComponentBucketInterface {
     targetComponents : Set<String> 
     entities : entityType[] 
 }
 export class ComponentManager {
-
     // Buckets to make objects easily searchable
-    componentBuckets : componentBucketInterface[] = [] 
-
+    componentBuckets : ComponentBucketInterface[] = [] 
     constructor() {}
-
-
 }
 
