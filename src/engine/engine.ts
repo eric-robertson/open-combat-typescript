@@ -1,6 +1,6 @@
 import {BaseSystem} from '../systems/BaseSystem';
 import { SystemManager } from './SystemManager';
-import { ComponentManager } from './ComponentManager';
+import { ComponentManager } from './component';
 import { EntityManager } from './EntityManger';
 
 export class Engine {
