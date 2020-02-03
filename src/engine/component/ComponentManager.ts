@@ -4,15 +4,10 @@ interface componentBucketInterface {
     targetComponents : Set<String> 
     entities : entityType[] 
 }
-
-interface componentMapType {
-    [id: number] : entityType
-}
-
 export class ComponentManager {
 
+    // Buckets to make objects easily searchable
     componentBuckets : componentBucketInterface[] = [] 
-    componentMap : componentMapType = {} 
 
     constructor() {}
 
