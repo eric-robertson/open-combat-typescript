@@ -23,6 +23,10 @@ export class EntityBucket {
         this.entities.push( entity )
     }
 
+    removeEntity ( entity : Entity ) {
+        this.entities = this.entities.filter ( e => e != entity )
+    }
+
 }
 
 export class EntityBucketManager {
@@ -50,13 +54,19 @@ export class EntityBucketManager {
 
     componentAdded ( component : string, entity : Entity ) {
         this.entityBuckets.forEach( bucket => {
-            if ( bucket.containsComponent( component )) {
-                console.log(bucket, 'is target')
-                console.log( entity.componentNames)
-                if ( bucket.targetsEqual( entity.componentNames ) ) {
+            if ( bucket.containsComponent( component )) 
+                if ( bucket.targetsEqual( entity.componentNames ) ) 
                     bucket.addEntity( entity )
-                }
-            }
+                
+        })
+    }
+
+    componenetRemoved ( component : string, entity : Entity ) {
+        this.entityBuckets.forEach( bucket => {
+            if ( bucket.containsComponent( component )) 
+                if ( bucket.targetsEqual( entity.componentNames ) ) 
+                    bucket.removeEntity( entity )
+                
         })
     }
 

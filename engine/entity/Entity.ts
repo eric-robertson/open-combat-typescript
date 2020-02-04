@@ -8,10 +8,17 @@ export class Entity {
     constructor ( private entityManager : EntityManager) {}
 
     addComponent ( component : string, data : any = {} ) {
-        if ( component[ component ] == undefined ) {
+        if ( this.components[ component ] == undefined ) 
             this.entityManager.addComponentToEntity( this, component, data )
-        }
     }
     
+    removeComponent ( component : string ) {
+        if ( this.components[ component ] != undefined )
+            this.entityManager.removeComponentFromEntity( this, component )
+    }
+
+    delete () {
+        this.entityManager.removeEntity( this )
+    }
 
 }
