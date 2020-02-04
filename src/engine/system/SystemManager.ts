@@ -1,19 +1,23 @@
-import {BaseSystem} from '../../systems/BaseSystem';
+import { EntityManager } from '../entity/EntityManger'
+
+export interface BaseSystem { 
+  init : ( (entityManager : EntityManager) => {} )
+  run : ( ( number ) => {} ) 
+}
 
 export class SystemManager {
-  systems: Array<BaseSystem>;
 
-  constructor() {
-    this.systems = Array<BaseSystem>();
-  }
+    systems : BaseSystem[] = []
 
-  runSystems() {
-    for (let i = 0; i < this.systems.length; i++) {
-      this.systems.indexOf[i].run();
+    runSystems ( deltaTime : number ) {
+		this.systems.forEach( s => s.run ( deltaTime ) )
     }
-  }
 
-  registerSystem(system: BaseSystem) {
-    this.systems.push(system);
-  }
+    registerSystem( system: BaseSystem ) {
+    	this.systems.push(system);
+    }
+
+    initAllSystems ( entityManager : EntityManager ) {
+      this.systems.forEach( sys => sys.init( entityManager ))
+    }
 }

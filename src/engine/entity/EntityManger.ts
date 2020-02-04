@@ -1,6 +1,6 @@
-import { Entity } from './Entity.js'
-import { EntityBucketManager } from './EntityBucketManager.js'
-import { ComponentInitializationManager } from './ComponentInitializationManager.js'
+import { Entity } from './Entity'
+import { EntityBucketManager } from './EntityBucketManager'
+import { ComponentInitializationManager } from './ComponentInitializationManager'
 
 // Let ids be unique
 let id = 0;

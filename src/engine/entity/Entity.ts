@@ -1,4 +1,4 @@
-import { EntityManager } from './EntityManger.js'
+import { EntityManager } from './EntityManger'
 
 export class Entity {
 
