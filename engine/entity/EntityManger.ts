@@ -1,10 +1,6 @@
-import { Entity } from './Entity'
-import { EntityBucketManager } from './EntityBucketManager'
-import { ComponentInitializationManager } from './ComponentInitializationManager'
-
-// Let ids be unique
-let id = 0;
-let getNextId : (() => number) = () => ++id;
+import { Entity } from './Entity.js'
+import { EntityBucketManager } from './EntityBucketManager.js'
+import { ComponentInitializationManager } from './ComponentInitializationManager.js'
 
 export class EntityManager {
     
@@ -25,10 +21,14 @@ export class EntityManager {
     addComponentToEntity ( entity : Entity, component : string, data : any) {
 
         entity.components[ component ] = data;
+        entity.componentNames.add( component )
 
         this.entityBucketManger.componentAdded( component, entity )
         this.componentInitializationManager.componentInitialized( component, entity )
     }
 
+    spawnNewEntity () {
+        return new Entity( this )
+    }
 
 }

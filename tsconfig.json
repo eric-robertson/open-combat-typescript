@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "module": "commonjs",
     "moduleResolution": "node",
     "pretty": true,
     "target": "es2019",
@@ -10,9 +9,10 @@
     "resolveJsonModule": true,
     "typeRoots" : ["./node_modules/@types"],
     "experimentalDecorators": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
   },
   "include": [
-    "src/**/*.*"
+    "engine/**/*.*",
+    "systems/**/*.*"
   ]
 }

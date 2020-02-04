@@ -1,6 +1,6 @@
-import { Entity } from './Entity'
+import { Entity } from './Entity.js'
 
-class EntityBucket {
+export class EntityBucket {
     
     private entities : Entity[] = []
 
@@ -51,8 +51,11 @@ export class EntityBucketManager {
     componentAdded ( component : string, entity : Entity ) {
         this.entityBuckets.forEach( bucket => {
             if ( bucket.containsComponent( component )) {
-                if ( bucket.targetsEqual( entity.componentNames ) )
+                console.log(bucket, 'is target')
+                console.log( entity.componentNames)
+                if ( bucket.targetsEqual( entity.componentNames ) ) {
                     bucket.addEntity( entity )
+                }
             }
         })
     }

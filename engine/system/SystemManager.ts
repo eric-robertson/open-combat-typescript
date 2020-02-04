@@ -1,4 +1,4 @@
-import { EntityManager } from '../entity/EntityManger'
+import { EntityManager } from '../entity/EntityManger.js'
 
 export interface BaseSystem { 
   init : ( (entityManager : EntityManager) => {} )

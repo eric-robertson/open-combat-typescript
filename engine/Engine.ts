@@ -1,6 +1,6 @@
-import { BaseSystem } from './system/SystemManager'
-import { SystemManager } from './system/SystemManager';
-import { EntityManager } from './entity/EntityManger';
+import { BaseSystem } from './system/SystemManager.js'
+import { SystemManager } from './system/SystemManager.js';
+import { EntityManager } from './entity/EntityManger.js';
 
 export class Engine {
 		
