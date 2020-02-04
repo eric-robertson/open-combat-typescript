@@ -1,7 +1,6 @@
 import { Entity } from './Entity.js'
-
-type componentInitializationCallback = ( (entity : Entity) => {} )
-interface componentInitializationCallbackMap { [id : string] : componentInitializationCallback }
+import { EntityBucketManager } from './EntityBucketManager.js'
+import { ComponentInitializationManager } from './ComponentInitializationManager.js'
 
 // Let ids be unique
 let id = 0;
@@ -10,18 +9,26 @@ let getNextId : (() => number) = () => ++id;
 export class EntityManager {
     
     // All entities on the scene are given and ID
-    entityMap : { [id: number] : Entity } = {}
-    componentInitializationCallbacks : componentInitializationCallbackMap = { } 
+    entities : { [id: number] : Entity } = {}
 
-    // Calls from the system to setup callbacks and buckets
+    componentInitializationManager = new ComponentInitializationManager () 
+    entityBucketManger = new EntityBucketManager ()
+
 
     createBucket ( searchNames : string[] ) { 
-        
+        return this.entityBucketManger.createBucket( searchNames )
     }
-    onComponentsCreated ( component : string, callback : componentInitializationCallback ) {
-        this.componentInitializationCallbacks[ component ] = callback 
+    createInitilizationCallback ( component : string, callback : any ) {
+        return this.componentInitializationManager.addNewCallback( component, callback )
     }
 
-    createBlankEntity () {}
+    addComponentToEntity ( entity : Entity, component : string, data : any) {
+
+        entity.components[ component ] = data;
+
+        this.entityBucketManger.componentAdded( component, entity )
+        this.componentInitializationManager.componentInitialized( component, entity )
+    }
+
 
 }
