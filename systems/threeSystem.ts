@@ -11,20 +11,19 @@ export function init ( entityManager : EntityManager ) {
     entitymanager = entityManager
 
     // Contains all 'blocks' in the scene
-    blockBucket = entityManager.createBucket(['block'])
+    blockBucket = entityManager.createBucket(['threeCube'])
 
     // Called whenever a new block is created
-    entityManager.createInitilizationCallback( 'block', (entity : Entity) => {
-        console.log('Component initialized with a block component')
+    entityManager.createInitilizationCallback( 'threeCube', (entity : Entity) => {
+        console.log('Component initialized with a threeCube component')
     })
 }
 
 export function run () {
     if ( !spawned ){
         spawned = true;
-        let created = entitymanager.spawnNewEntity()
-        created.addComponent( 'testComponent' )
-        testBucket.getEntities( entity => {
+        let created = entitymanager.spawnEntityFromBlueprint( 'Block', {} )
+        blockBucket.getEntities( entity => {
             console.log('Entity in bucket', entity )
         })
     }

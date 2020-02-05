@@ -42,9 +42,14 @@ export class EntityManager {
     spawnNewEntity () {
         return new Entity( this )
     }
-    spawnEntityFromBlueprint ( blueprint : string, data : any ) {
-        this.blueprintManager.instantiateFromBlueprint( blueprint, this, data )
+
+    registerBlueprint ( blueprintModule : any ) {
+        this.blueprintManager.registerBlueprint( blueprintModule.name, blueprintModule.data )
     }
+    spawnEntityFromBlueprint ( blueprint : string, data : any ) {
+        return this.blueprintManager.instantiateFromBlueprint( blueprint, this, data )
+    }
+
     removeEntity ( entity : Entity ) {
         let components = [... entity.componentNames ]
         components.forEach( c => this.removeComponentFromEntity( entity, c ) )

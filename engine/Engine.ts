@@ -1,4 +1,3 @@
-import { EntityBlueprintManager } from './EntityBlueprintManager';
 import { BaseSystem } from './SystemManager.js'
 import { SystemManager } from './SystemManager.js';
 import { EntityManager } from './EntityManger.js';
@@ -32,7 +31,7 @@ export class Engine {
     }
 
     registerBlueprint ( blueprintModule : any ) {
-        this.blueprintManager.registerBlueprint( blueprintModule.name, blueprintModule.data )
+        this.entityManager.registerBlueprint( blueprintModule )
     }
 
 }

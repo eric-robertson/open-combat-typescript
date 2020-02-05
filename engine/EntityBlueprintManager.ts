@@ -8,14 +8,16 @@ export class EntityBlueprintManager {
         this.blueprints[ identifier ] = data;
     }
 
-    instantiateFromBlueprint ( identifier : string, entityManager : EntityManager, componentData : any,  ){
+    instantiateFromBlueprint ( identifier : string, entityManager : EntityManager, componentData : any){
+
         let newEntity = entityManager.spawnNewEntity();
-        // TOdo fix to include identifier 
-        let targetComponents = Object.keys( componentData )
+        let blueprintData = this.blueprints[ identifier ]
+        let targetComponents = Object.keys( blueprintData )
+
         targetComponents.forEach( component => {
-            if ( newEntity.components.has( component )) return;
-            newEntity.addComponent( component, componentData.data )
+            newEntity.addComponent( component, {... blueprintData[component], ... componentData[component] } )
         })
+        
         return newEntity
     }
 
