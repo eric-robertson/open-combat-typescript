@@ -2,12 +2,14 @@ import { Entity } from './Entity.js'
 import { EntityBucketManager } from './EntityBucketManager.js'
 import { ComponentInitializationManager } from './ComponentInitializationManager.js'
 import { ComponentDestructionManager } from './ComponentDestructionManager.js'
+import { EntityBlueprintManager } from './EntityBlueprintManager.js'
 
 export class EntityManager {
     
     componentInitializationManager = new ComponentInitializationManager () 
     componentDestructionManager = new ComponentDestructionManager () 
     entityBucketManger = new EntityBucketManager ()
+    blueprintManager : EntityBlueprintManager = new EntityBlueprintManager () ;
 
     createBucket ( searchNames : string[] ) { 
         return this.entityBucketManger.createBucket( searchNames )
@@ -39,6 +41,9 @@ export class EntityManager {
 
     spawnNewEntity () {
         return new Entity( this )
+    }
+    spawnEntityFromBlueprint ( blueprint : string, data : any ) {
+        this.blueprintManager.instantiateFromBlueprint( blueprint, this, data )
     }
     removeEntity ( entity : Entity ) {
         let components = [... entity.componentNames ]

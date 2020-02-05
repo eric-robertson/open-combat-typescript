@@ -14,7 +14,8 @@
     "tsc-watch": "^4.1.0"
   },
   "scripts": {
-    "start": "node run.js"
+    "start": "node run.js",
+    "index": "node indexGenerator.js"
   },
   "author": "",
   "license": "ISC"

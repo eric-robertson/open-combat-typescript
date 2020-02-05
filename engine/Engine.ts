@@ -1,11 +1,12 @@
-import { BaseSystem } from './system/SystemManager.js'
-import { SystemManager } from './system/SystemManager.js';
-import { EntityManager } from './entity/EntityManger.js';
+import { EntityBlueprintManager } from './EntityBlueprintManager';
+import { BaseSystem } from './SystemManager.js'
+import { SystemManager } from './SystemManager.js';
+import { EntityManager } from './EntityManger.js';
 
 export class Engine {
 		
 	systemManager: SystemManager = new SystemManager();
-	entityManager: EntityManager = new EntityManager();
+    entityManager: EntityManager = new EntityManager();
 
 	gameLoop: any;
 
@@ -28,5 +29,10 @@ export class Engine {
 
 	registerSystem(system: BaseSystem) {
 		this.systemManager.registerSystem( system )
-	}
+    }
+
+    registerBlueprint ( blueprintModule : any ) {
+        this.blueprintManager.registerBlueprint( blueprintModule.name, blueprintModule.data )
+    }
+
 }

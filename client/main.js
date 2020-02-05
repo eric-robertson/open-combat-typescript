@@ -1,8 +1,10 @@
 import {Engine} from '../build/engine/Engine.js';
-import * as TestSystem from '../build/systems/TestSystem.js'
+
+import { files as Systems } from '../build/systems/_index.js'
+import { files as Blueprints } from '../build/blueprints/_index.js'
 
 let engine = new Engine();
 
-engine.registerSystem( TestSystem )
+Systems.forEach( system => engine.registerSystem( system ))
 
 engine.startGameLoop(20);

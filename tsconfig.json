@@ -3,9 +3,9 @@
     "allowJs": true,
     "moduleResolution": "node",
     "pretty": true,
-    "target": "es2019",
+    "target": "ES6",
     "outDir": "./build",
-    "lib": ["ES2017"],
+    "lib": ["ES6"],
     "resolveJsonModule": true,
     "typeRoots" : ["./node_modules/@types"],
     "experimentalDecorators": true,
@@ -13,6 +13,7 @@
   },
   "include": [
     "engine/**/*.*",
-    "systems/**/*.*"
+    "systems/**/*.*",
+    "blueprints/**/*.*",
   ]
 }
