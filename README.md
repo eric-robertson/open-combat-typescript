@@ -1,6 +1,6 @@
-## WIP Project
+## Open Combat ECS Engine for Web
 
-- Currently a basic implementation of an Entity Component Systems 3D game engine in Typescript
+- Currently a implementation of an Entity Component Systems 3D game engine in Typescript
 
 #### Technologies used
 
